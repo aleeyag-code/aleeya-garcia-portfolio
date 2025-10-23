@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleeya Garcia | Neuro-AI Engineer</title>
+    <meta name="description" content="Neuroscientist-turned-AI-Engineer building brains for machines. Specializing in computer vision, neural networks, and cutting-edge AI applications.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+    
+    <style>
+        /* All the CSS styles from your code go here */
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --bg-tertiary: #1a1a1a;
+            --accent-primary: #00f5d4;
+            --accent-secondary: #0066ff;
+            --accent-tertiary: #8b00ff;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-muted: #666666;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glow-primary: 0 0 20px rgba(0, 245, 212, 0.3);
+            --glow-secondary: 0 0 20px rgba(0, 102, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ... (include ALL the CSS styles from your original code) ... */
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-text">Initializing Neural Network...</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- 3D Background Canvas -->
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">AG</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#brainwave">Brainwave</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#" class="btn" onclick="downloadResume()">Resume</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="glitch" data-text="Aleeya Garcia">Aleeya Garcia</span>
+            </h1>
+            <p class="hero-subtitle">
+                <span id="typed-text"></span>
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn primary">Explore My Work</a>
+                <a href="contact.html" class="btn">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Matrix Section -->
+    <section id="skills" class="skills-section fade-in">
+        <h2 class="section-title">Technical <span class="text-primary">Competencies</span></h2>
+        <div class="skills-container">
+            <div class="skills-description">
+                <p class="mb-2">
+                    As a Neuroscientist-turned-AI-Engineer, I bridge the gap between biological intelligence and artificial systems. 
+                    My expertise spans from deep learning architectures to neuro-inspired algorithms.
+                </p>
+                <p class="mb-2">
+                    <strong class="text-primary">Core Strengths:</strong> Computer Vision, Neural Networks, MLOps, and Data Science
+                </p>
+                <p>
+                    <strong class="text-secondary">Emerging Technologies:</strong> Transformers, Generative AI, Edge Computing
+                </p>
+            </div>
+            <div class="skills-chart" id="skillsChart"></div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section fade-in">
+        <h2 class="section-title">Featured <span class="text-primary">Projects</span></h2>
+        <div class="projects-grid">
+            <!-- AI Hedge Fund Project -->
+            <div class="project-card">
+                <img src="resources/ai-hedge-fund-dashboard.png" alt="AI Hedge Fund Dashboard" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">AI Hedge Fund</h3>
+                    <p class="project-description">
+                        Self-taught implementation of an autonomous trading agent with behavioral finance integration. 
+                        Built with Poetry, Docker, and Redis caching for optimal performance.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Poetry</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Alpha Vantage API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn" onclick="showProjectDetails('hedge-fund')">View Details</a>
+                        <a href="#" class="btn" onclick="openGitHub('ai-hedge-fund')">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tesla Detection Project -->
+            <div class="project-card">
+                <img src="resources/tesla-detection-system.png" alt="Tesla Vehicle Detection" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Tesla Vehicle Detection</h3>
+                    <p class="project-description">
+                        Real-time vehicle detection system using YOLOv5 with 89% mAP. 
+                        Deployed on AWS EC2 with sub-100ms latency for production use.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">YOLOv5</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">OpenCV</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn" onclick="showProjectDetails('tesla-detection')">View Details</a>
+                        <a href="#" class="btn" onclick="openGitHub('tesla-detection')">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Risk Predictor -->
+            <div class="project-card">
+                <img src="resources/loan-risk-predictor.png" alt="Loan Risk Prediction" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Loan Risk Predictor</h3>
+                    <p class="project-description">
+                        Advanced risk assessment model with 0.92 AUC-ROC. 
+                        REST API deployment with comprehensive testing and CI/CD pipeline.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">XGBoost</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">SMOTE</span>
+                        <span class="tech-tag">PyTest</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn" onclick="showProjectDetails('loan-risk')">View Details</a>
+                        <a href="#" class="btn" onclick="openGitHub('loan-risk-predictor')">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brainwave Analyzer Section -->
+    <section id="brainwave" class="brainwave-section fade-in">
+        <div class="brainwave-container">
+            <h2 class="section-title">Interactive <span class="text-primary">Brainwave</span> Analyzer</h2>
+            <p class="mb-2">
+                Explore neuroscience concepts through interactive visualization. 
+                Adjust frequency parameters to see how different brainwave patterns emerge.
+            </p>
+            <div class="brainwave-canvas" id="brainwaveCanvas"></div>
+            <div class="brainwave-controls">
+                <div class="control-group">
+                    <label class="control-label">Frequency (Hz)</label>
+                    <input type="range" class="control-slider" id="frequencySlider" min="1" max="50" value="10">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Amplitude</label>
+                    <input type="range" class="control-slider" id="amplitudeSlider" min="10" max="100" value="50">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Noise Level</label>
+                    <input type="range" class="control-slider" id="noiseSlider" min="0" max="50" value="10">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">
+                Let's build the next brain-inspired model together.
+            </p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/aleeya-garcia" target="_blank" class="social-link">
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/aleeya-garcia" target="_blank" class="social-link">
+                    <span>GitHub</span>
+                </a>
+                <a href="mailto:aleeyag.ai@gmail.com" class="social-link">
+                    <span>Email</span>
+                </a>
+            </div>
+            <p class="copyright">
+                © 2024 Aleeya Garcia. Built with neural networks and caffeine.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Main JavaScript functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove loading screen
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 2000);
+
+            // Initialize Typed.js
+            new Typed('#typed-text', {
+                strings: [
+                    'Neuro-AI Engineer',
+                    'Computer Vision Specialist',
+                    'MLOps Engineer',
+                    'Neuroscience Researcher'
+                ],
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 2000,
+                loop: true
+            });
+
+            // Initialize skills chart
+            initializeSkillsChart();
+
+            // Initialize 3D background
+            initializeNeuralBackground();
+
+            // Initialize brainwave visualization
+            initializeBrainwaveVisualization();
+
+            // Scroll animations
+            initializeScrollAnimations();
+        });
+
+        function initializeSkillsChart() {
+            const chart = echarts.init(document.getElementById('skillsChart'));
+            const option = {
+                radar: {
+                    indicator: [
+                        { name: 'Python', max: 100 },
+                        { name: 'TensorFlow', max: 100 },
+                        { name: 'Computer Vision', max: 100 },
+                        { name: 'Neural Networks', max: 100 },
+                        { name: 'MLOps', max: 100 },
+                        { name: 'Data Science', max: 100 }
+                    ],
+                    shape: 'circle',
+                    radius: '80%',
+                    splitNumber: 5,
+                    axisName: {
+                        color: '#fff',
+                        backgroundColor: '#000',
+                        borderRadius: 3,
+                        padding: [3, 5]
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    splitArea: {
+                        show: true,
+                        areaStyle: {
+                            color: ['rgba(0, 245, 212, 0.1)', 'rgba(0, 102, 255, 0.1)']
+                        }
+                    }
+                },
+                series: [{
+                    type: 'radar',
+                    data: [{
+                        value: [95, 88, 92, 90, 85, 89],
+                        name: 'Technical Skills',
+                        areaStyle: {
+                            color: 'rgba(0, 245, 212, 0.4)'
+                        },
+                        lineStyle: {
+                            color: 'rgba(0, 245, 212, 1)'
+                        },
+                        itemStyle: {
+                            color: 'rgba(0, 245, 212, 1)'
+                        }
+                    }]
+                }]
+            };
+            chart.setOption(option);
+        }
+
+        function initializeNeuralBackground() {
+            const canvas = document.getElementById('neural-canvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            
+            // Create neural connections
+            const nodes = [];
+            const connections = [];
+            
+            // Create nodes
+            for (let i = 0; i < 50; i++) {
+                const geometry = new THREE.SphereGeometry(0.1, 8, 8);
+                const material = new THREE.MeshBasicMaterial({ 
+                    color: new THREE.Color().setHSL(Math.random(), 0.8, 0.6) 
+                });
+                const node = new THREE.Mesh(geometry, material);
+                
+                node.position.x = (Math.random() - 0.5) * 10;
+                node.position.y = (Math.random() - 0.5) * 10;
+                node.position.z = (Math.random() - 0.5) * 10;
+                
+                node.velocity = new THREE.Vector3(
+                    (Math.random() - 0.5) * 0.02,
+                    (Math.random() - 0.5) * 0.02,
+                    (Math.random() - 0.5) * 0.02
+                );
+                
+                nodes.push(node);
+                scene.add(node);
+            }
+            
+            camera.position.z = 5;
+            
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                nodes.forEach(node => {
+                    node.position.add(node.velocity);
+                    
+                    // Boundary check
+                    ['x', 'y', 'z'].forEach(axis => {
+                        if (Math.abs(node.position[axis]) > 5) {
+                            node.velocity[axis] *= -1;
+                        }
+                    });
+                    
+                    // Pulsing effect
+                    node.scale.x = node.scale.y = node.scale.z = 
+                        0.5 + 0.5 * Math.sin(Date.now() * 0.001 + node.position.x);
+                });
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        function initializeBrainwaveVisualization() {
+            const brainwaveCanvas = document.getElementById('brainwaveCanvas');
+            let p5Instance = null;
+            
+            if (brainwaveCanvas && typeof p5 !== 'undefined') {
+                p5Instance = new p5((p) => {
+                    let time = 0;
+                    let frequency = 10;
+                    let amplitude = 50;
+                    let noiseLevel = 10;
+                    
+                    p.setup = () => {
+                        p.createCanvas(brainwaveCanvas.offsetWidth, brainwaveCanvas.offsetHeight);
+                        p.frameRate(30);
+                    };
+                    
+                    p.draw = () => {
+                        p.background(0);
+                        p.stroke(0, 245, 212);
+                        p.strokeWeight(2);
+                        p.noFill();
+                        
+                        p.beginShape();
+                        for (let x = 0; x < p.width; x += 2) {
+                            const normalizedX = x / p.width;
+                            const baseY = p.height / 2 + 
+                                Math.sin(normalizedX * frequency * Math.PI * 2 + time) * amplitude;
+                            const noiseY = (Math.random() - 0.5) * noiseLevel;
+                            const y = baseY + noiseY;
+                            p.vertex(x, y);
+                        }
+                        p.endShape();
+                        
+                        time += 0.1;
+                    };
+                    
+                    // Update sliders
+                    document.getElementById('frequencySlider')?.addEventListener('input', (e) => {
+                        frequency = e.target.value;
+                    });
+                    
+                    document.getElementById('amplitudeSlider')?.addEventListener('input', (e) => {
+                        amplitude = e.target.value;
+                    });
+                    
+                    document.getElementById('noiseSlider')?.addEventListener('input', (e) => {
+                        noiseLevel = e.target.value;
+                    });
+                }, brainwaveCanvas);
+            }
+        }
+
+        function initializeScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        function showProjectDetails(projectId) {
+            alert(`Project details for ${projectId} would be shown here.`);
+        }
+
+        function openGitHub(repoName) {
+            alert(`GitHub repository for ${repoName} would open here.`);
+        }
+
+        function downloadResume() {
+            alert('Resume download functionality would be implemented here.');
+        }
+    </script>
+</body>
+</html>
