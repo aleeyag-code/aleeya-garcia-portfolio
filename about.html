@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Aleeya Garcia | Neuro-AI Engineer</title>
+    <meta name="description" content="Learn about Aleeya Garcia's journey from neuroscience to AI engineering, her background, and passion for building brain-inspired AI systems.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --bg-tertiary: #1a1a1a;
+            --accent-primary: #00f5d4;
+            --accent-secondary: #0066ff;
+            --accent-tertiary: #8b00ff;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-muted: #666666;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glow-primary: 0 0 20px rgba(0, 245, 212, 0.3);
+            --glow-secondary: 0 0 20px rgba(0, 102, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .about-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .text-primary {
+            color: var(--accent-primary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .about-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-card h3 {
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 2rem;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 2rem;
+        }
+
+        .timeline-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-content h4 {
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+        }
+
+        .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .timeline::before {
+                left: 2rem;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 4rem !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">AG</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#brainwave">Brainwave</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <h1>About Me</h1>
+            <p>From Neuroscience to AI Engineering: Building the Future of Intelligent Systems</p>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <h2 class="section-title">My <span class="text-primary">Journey</span></h2>
+        
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>🧠 Neuroscience Foundation</h3>
+                <p>
+                    My journey began in neuroscience, where I studied the intricate workings of the human brain. 
+                    This foundation gave me a deep understanding of how biological neural networks process information, 
+                    learn, and adapt. This knowledge became the cornerstone of my approach to artificial intelligence.
+                </p>
+            </div>
+            
+            <div class="about-card">
+                <h3>🤖 AI Engineering Transition</h3>
+                <p>
+                    Transitioning to AI engineering, I discovered the fascinating parallels between biological 
+                    and artificial neural networks. My neuroscience background allows me to approach AI problems 
+                    with a unique perspective, often finding inspiration in how the brain solves complex problems.
+                </p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Professional <span class="text-primary">Timeline</span></h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>Neuroscience Research</h4>
+                    <div class="date">2018 - 2021</div>
+                    <p>Conducted research on neural plasticity and learning mechanisms in biological systems. 
+                    Published papers on cognitive processes and memory formation.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>AI Bootcamp & Self-Learning</h4>
+                    <div class="date">2021 - 2022</div>
+                    <p>Intensive self-directed learning in machine learning, deep learning, and computer vision. 
+                    Built foundational projects in neural networks and data science.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>AI Engineer</h4>
+                    <div class="date">2022 - Present</div>
+                    <p>Developing production-ready AI systems with focus on computer vision, MLOps, and 
+                    neuro-inspired algorithms. Specializing in real-time applications and edge computing.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>🎯 Mission</h3>
+                <p>
+                    To bridge the gap between biological intelligence and artificial systems, creating AI 
+                    solutions that are not just powerful, but also interpretable and inspired by the elegance 
+                    of natural neural processes.
+                </p>
+            </div>
+            
+            <div class="about-card">
+                <h3>💡 Philosophy</h3>
+                <p>
+                    I believe the future of AI lies in understanding and mimicking the principles that make 
+                    biological intelligence so efficient and adaptable. Every project I work on incorporates 
+                    insights from neuroscience to create more robust and intelligent systems.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">
+                Let's build the next brain-inspired model together.
+            </p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/aleeya-garcia" target="_blank" class="social-link">
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/aleeya-garcia" target="_blank" class="social-link">
+                    <span>GitHub</span>
+                </a>
+                <a href="mailto:aleeyag.ai@gmail.com" class="social-link">
+                    <span>Email</span>
+                </a>
+            </div>
+            <p class="copyright">
+                © 2024 Aleeya Garcia. Built with neural networks and caffeine.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
